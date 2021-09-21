@@ -31,6 +31,4 @@ public class Banking {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-
-
 }
