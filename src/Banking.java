@@ -1,6 +1,10 @@
+import java.util.Scanner;
+
 public class Banking {
     private String name;
     private double balance;
+
+    Scanner scanner = new Scanner(System.in);
 
     public Banking(String name, double balance){
         this.name = name;
@@ -31,4 +35,16 @@ public class Banking {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+    public void initializeAccount(Banking object){
+        System.out.printf("%n%nNew Account Name: ");
+        String temp1 = scanner.next();
+        //input.nextLine();
+        object.setName(temp1);
+        System.out.printf("%nNew Account's Initial Balance: ");
+        double temp2 = scanner.nextDouble();
+        scanner.nextLine();
+        object.setBalance(temp2);
+    }
+
 }
