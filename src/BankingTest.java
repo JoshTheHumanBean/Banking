@@ -5,8 +5,10 @@ public class BankingTest {
 
         Scanner scanner = new Scanner(System.in);
 
-        Banking account1 = new Banking("Braden Hines", 50.75);
-        Banking account2 =  new Banking("Timothy Syfert", 20.00);
+        int currentAccount = 1;
+
+        Banking account1 = new Banking(currentAccount,"Braden Hines", 50.75);  currentAccount++;
+        Banking account2 =  new Banking(currentAccount,"Timothy Syfert", 20.00); currentAccount++;
 
         System.out.printf("%s's balance: $%.2f",
                 account1.getName(), account1.getBalance());
@@ -34,7 +36,7 @@ public class BankingTest {
                 account2.getName(), account2.getBalance());
 
         System.out.printf("%n%nPlease enter new account details");
-        Banking account3 = new Banking(null, 0);
+        Banking account3 = new Banking(currentAccount,null, 0); currentAccount++;
 
         System.out.printf("%n%nNew Account Name: ");
         String temp1 = scanner.next();

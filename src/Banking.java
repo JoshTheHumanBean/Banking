@@ -1,12 +1,13 @@
 import java.util.Scanner;
 
 public class Banking {
+    private int accountNumber;
     private String name;
     private double balance;
 
     Scanner scanner = new Scanner(System.in);
 
-    public Banking(String name, double balance){
+    public Banking(int accountNumber, String name, double balance){
         this.name = name;
 
         if (balance > 0.0) this.balance = balance;
@@ -36,7 +37,11 @@ public class Banking {
         this.balance = balance;
     }
 
-    public void initializeAccount(Banking object){
+    public void setAccountNumber(int accountNumber){
+        if (accountNumber > 0) this.accountNumber = accountNumber;
+    }
+
+    /*public void initializeAccount(Banking object){
         System.out.printf("%n%nNew Account Name: ");
         String temp1 = scanner.next();
         //input.nextLine();
@@ -45,6 +50,6 @@ public class Banking {
         double temp2 = scanner.nextDouble();
         scanner.nextLine();
         object.setBalance(temp2);
-    }
+    }*/
 
 }
