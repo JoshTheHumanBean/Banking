@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Scanner;
 
 public class Banking {
@@ -41,6 +43,11 @@ public class Banking {
         if (accountNumber > 0) this.accountNumber = accountNumber;
     }
 
+    public static void printInfo(@NotNull Banking object){
+        System.out.printf("%n%s's balance: $%.2f",
+                object.getName(), object.getBalance());
+
+    }
     /*public void initializeAccount(Banking object){
         System.out.printf("%n%nNew Account Name: ");
         String temp1 = scanner.next();

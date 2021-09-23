@@ -40,20 +40,24 @@ public class BankingTest {
 
         System.out.printf("%n%nNew Account Name: ");
         String temp1 = scanner.next();
-        //input.nextLine();
+        scanner.nextLine();
         account3.setName(temp1);
         System.out.printf("%nNew Account's Initial Balance: ");
         double temp2 = scanner.nextDouble();
         scanner.nextLine();
         account3.setBalance(temp2);
 
+        Banking.printInfo(account1);
+        Banking.printInfo(account2);
+        Banking.printInfo(account3);
 
+        /*
         System.out.printf("%n%s's balance: $%.2f",
                 account1.getName(), account1.getBalance());
         System.out.printf("%n%s's balance: $%.2f",
                 account2.getName(), account2.getBalance());
         System.out.printf("%n%s's balance: $%.2f",
                 account3.getName(), account3.getBalance());
-
+        */
     }
 }
