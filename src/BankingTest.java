@@ -5,8 +5,6 @@ public class BankingTest {
 
         Scanner scanner = new Scanner(System.in);
 
-        int currentAccount = 1;
-
         Banking account1 = new Banking("Braden Hines", 50.75);
         Banking account2 =  new Banking("Timothy Syfert", 20.00);
 
