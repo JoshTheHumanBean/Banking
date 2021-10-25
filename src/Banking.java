@@ -9,6 +9,12 @@ public class Banking {
 
     Scanner scanner = new Scanner(System.in);
 
+    public Banking(){
+        this.name = "null";
+
+        this.balance = 0;
+    }
+
     public Banking(int accountNumber, String name, double balance){
         this.name = name;
 
