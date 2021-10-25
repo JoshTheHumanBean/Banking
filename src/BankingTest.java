@@ -1,3 +1,5 @@
+import java.text.Normalizer;
+
 public class BankingTest {
     public static void main(String[] args) {
 
@@ -6,16 +8,19 @@ public class BankingTest {
 
         Banking.printInfo(account1);
         Banking.printInfo(account2);
+        Formatting.blankSpace(1);
 
         Banking.promptDeposit(account1);
 
         Banking.printInfo(account1);
         Banking.printInfo(account2);
+        Formatting.blankSpace(1);
 
         Banking.promptWithdrawal(account2);
 
         Banking.printInfo(account1);
         Banking.printInfo(account2);
+        Formatting.blankSpace(1);
 
         Banking account3 = new Banking();
 

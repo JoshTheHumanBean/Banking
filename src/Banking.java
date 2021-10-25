@@ -1,5 +1,6 @@
 import org.jetbrains.annotations.NotNull;
 
+import java.text.Normalizer;
 import java.util.Scanner;
 
 public class Banking {
@@ -22,9 +23,10 @@ public class Banking {
 
     public static void promptDeposit(@NotNull Banking object){
 
-        System.out.printf("%n%nEnter deposit amount for %s: ",
+        System.out.printf("Enter deposit amount for %s: ",
                 object.getName());
         object.deposit(Banking.input.nextDouble());
+        Formatting.blankSpace(1);
 
     }
 
@@ -34,9 +36,10 @@ public class Banking {
 
     public static void promptWithdrawal(@NotNull Banking object){
 
-        System.out.printf("%n%nEnter withdrawal amount for %s: ",
+        System.out.printf("Enter withdrawal amount for %s: ",
                 object.getName());
         object.withdraw(Banking.input.nextDouble());
+        Formatting.blankSpace(1);
 
     }
 
@@ -61,16 +64,19 @@ public class Banking {
     }
 
     public static void printInfo(@NotNull Banking object){
-        System.out.printf("%n%s's balance: $%.2f",
+        System.out.printf("%s's balance: $%.2f%n",
                 object.getName(), object.getBalance());
 
     }
     public static void initializeAccount(Banking object){
-        System.out.printf("%n%nPlease enter new account details");
-        System.out.printf("%n%nNew Account Name: ");
+        System.out.printf("Please enter new account details%n");
+        Formatting.blankSpace(1);
+        System.out.printf("New Account Name: ");
         object.setName(input.next());
-        System.out.printf("%nNew Account's Initial Balance: ");
+        Formatting.blankSpace(1);
+        System.out.printf("New Account's Initial Balance: ");
         object.setBalance(input.nextDouble());
+        Formatting.blankSpace(1);
     }
 
 }
