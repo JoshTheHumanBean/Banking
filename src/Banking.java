@@ -1,11 +1,11 @@
 import org.jetbrains.annotations.NotNull;
-
 import java.text.Normalizer;
 import java.util.Scanner;
 
 public class Banking {
     private String name;
     private double balance;
+    private int pin;
 
     public static Scanner input = new Scanner(System.in);
 
@@ -13,12 +13,19 @@ public class Banking {
         this.name = "null";
 
         this.balance = 0;
+
+        this.pin = 1111;
     }
 
-    public Banking(String name, double balance){
+    public Banking(String name, double balance, int pin){
         this.name = name;
 
         if (balance > 0.0) this.balance = balance;
+
+        int length = String.valueOf(pin).length();
+
+        if (length == 4) this.pin = pin;
+
     }
 
     public static void promptDeposit(@NotNull Banking object){
