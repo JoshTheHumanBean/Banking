@@ -33,19 +33,8 @@ public class BankingTest {
         Banking account3 = new Banking();
 
         System.out.printf("%n%nNew Account Name: ");
-
         account3.setName(scanner.next());
 
-        System.out.printf("%nNew Account's Initial Balance: ");
-        account3.setBalance(scanner.nextDouble());
-
-        Banking.printInfo(account1);
-        Banking.printInfo(account2);
-        Banking.printInfo(account3);
-
-
-        String temp1 = scanner.next();
-        account3.setName(scanner.nextLine());
         System.out.printf("%nNew Account's Initial Balance: ");
         account3.setBalance(scanner.nextDouble());
 
