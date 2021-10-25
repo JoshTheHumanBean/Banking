@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class BankingTest {
     public static void main(String[] args) {
 
