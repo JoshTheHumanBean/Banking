@@ -78,10 +78,10 @@ public class Banking {
     public static void initializeAccount(Banking object){
         System.out.printf("Please enter new account details%n");
         Formatting.blankSpace(1);
-        System.out.printf("New Account Name: ");
+        System.out.print("New Account Name: ");
         object.setName(input.next());
         Formatting.blankSpace(1);
-        System.out.printf("New Account's Initial Balance: ");
+        System.out.print("New Account's Initial Balance: ");
         object.setBalance(input.nextDouble());
         Formatting.blankSpace(1);
     }
