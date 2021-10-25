@@ -3,7 +3,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Scanner;
 
 public class Banking {
-    private int accountNumber;
     private String name;
     private double balance;
 
@@ -15,7 +14,7 @@ public class Banking {
         this.balance = 0;
     }
 
-    public Banking(int accountNumber, String name, double balance){
+    public Banking(String name, double balance){
         this.name = name;
 
         if (balance > 0.0) this.balance = balance;
@@ -43,10 +42,6 @@ public class Banking {
 
     public void setBalance(double balance) {
         this.balance = balance;
-    }
-
-    public void setAccountNumber(int accountNumber){
-        if (accountNumber > 0) this.accountNumber = accountNumber;
     }
 
     public static void printInfo(@NotNull Banking object){

@@ -7,8 +7,8 @@ public class BankingTest {
 
         int currentAccount = 1;
 
-        Banking account1 = new Banking(currentAccount,"Braden Hines", 50.75);  currentAccount++;
-        Banking account2 =  new Banking(currentAccount,"Timothy Syfert", 20.00); currentAccount++;
+        Banking account1 = new Banking("Braden Hines", 50.75);
+        Banking account2 =  new Banking("Timothy Syfert", 20.00);
 
         Banking.printInfo(account1);
         Banking.printInfo(account2);
