@@ -6,7 +6,7 @@ public class Banking {
     private String name;
     private double balance;
 
-    Scanner scanner = new Scanner(System.in);
+    public static Scanner input = new Scanner(System.in);
 
     public Banking(){
         this.name = "null";
@@ -49,15 +49,11 @@ public class Banking {
                 object.getName(), object.getBalance());
 
     }
-    /*public void initializeAccount(Banking object){
+    public static void initializeAccount(Banking object){
         System.out.printf("%n%nNew Account Name: ");
-        String temp1 = scanner.next();
-        //input.nextLine();
-        object.setName(temp1);
+        object.setName(input.next());
         System.out.printf("%nNew Account's Initial Balance: ");
-        double temp2 = scanner.nextDouble();
-        scanner.nextLine();
-        object.setBalance(temp2);
-    }*/
+        object.setBalance(input.nextDouble());
+    }
 
 }
