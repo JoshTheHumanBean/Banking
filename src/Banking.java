@@ -20,12 +20,28 @@ public class Banking {
         if (balance > 0.0) this.balance = balance;
     }
 
+    public static void promptDeposit(@NotNull Banking object){
+
+        System.out.printf("%n%nEnter deposit amount for %s: ",
+                object.getName());
+        object.deposit(Banking.input.nextDouble());
+
+    }
+
     public void deposit(double depositAmount){
         if (depositAmount > 0.0) balance += depositAmount;
     }
 
-    public void withdraw(double withdrawlAmount){
-        if (withdrawlAmount > 0.0) balance -= withdrawlAmount;
+    public static void promptWithdrawal(@NotNull Banking object){
+
+        System.out.printf("%n%nEnter withdrawal amount for %s: ",
+                object.getName());
+        object.withdraw(Banking.input.nextDouble());
+
+    }
+
+    public void withdraw(double withdrawalAmount){
+        if (withdrawalAmount > 0.0) balance -= withdrawalAmount;
     }
 
     public double getBalance(){
@@ -50,6 +66,7 @@ public class Banking {
 
     }
     public static void initializeAccount(Banking object){
+        System.out.printf("%n%nPlease enter new account details");
         System.out.printf("%n%nNew Account Name: ");
         object.setName(input.next());
         System.out.printf("%nNew Account's Initial Balance: ");

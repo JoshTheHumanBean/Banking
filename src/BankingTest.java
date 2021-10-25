@@ -9,23 +9,16 @@ public class BankingTest {
         Banking.printInfo(account1);
         Banking.printInfo(account2);
 
-        System.out.printf("%n%nEnter deposit amount for %s: ",
-                account1.getName());
-        double depositAmount = Banking.input.nextDouble();
-        account1.deposit(depositAmount);
+        Banking.promptDeposit(account1);
 
         Banking.printInfo(account1);
         Banking.printInfo(account2);
 
-        System.out.printf("%n%nEnter withdrawal amount for %s: ",
-                account2.getName());
-        double withdrawalAmount = Banking.input.nextDouble();
-        account2.withdraw(withdrawalAmount);
+        Banking.promptWithdrawal(account2);
 
         Banking.printInfo(account1);
         Banking.printInfo(account2);
 
-        System.out.printf("%n%nPlease enter new account details");
         Banking account3 = new Banking();
 
         Banking.initializeAccount(account3);
@@ -34,7 +27,5 @@ public class BankingTest {
         Banking.printInfo(account2);
         Banking.printInfo(account3);
 
-
-    
     }
 }
