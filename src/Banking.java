@@ -56,7 +56,7 @@ public class Banking {
     }
 
     public static void promptDeposit(@NotNull Banking object){
-        System.out.printf("For security reasons, please enter %s's pin number: ", object);
+        System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
         if (object.checkPin()) {
 
             System.out.printf("Enter deposit amount for %s: ",
@@ -71,15 +71,23 @@ public class Banking {
     }
 
     public void deposit(double depositAmount){
+
         if (depositAmount > 0.0) balance += depositAmount;
     }
 
     public static void promptWithdrawal(@NotNull Banking object){
+        System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
+        if (object.checkPin()) {
 
-        System.out.printf("Enter withdrawal amount for %s: ",
-                object.getName());
-        object.withdraw(Banking.input.nextDouble());
-        Formatting.blankSpace(1);
+            System.out.printf("Enter withdrawal amount for %s: ",
+                    object.getName());
+            object.withdraw(Banking.input.nextDouble());
+            Formatting.blankSpace(1);
+        }
+
+        else {
+            System.out.printf("Invalid pin entered; Action canceled%n");
+        }
 
     }
 
