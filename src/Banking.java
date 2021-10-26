@@ -168,4 +168,38 @@ public class Banking {
         return input.next().equals(pin);
     }
 
+    public static void mainMenu(){
+
+        int choice;
+
+        System.out.printf("Welcome%n");
+
+        do {
+            System.out.printf("----------------------%n");
+            System.out.printf("(1) Create new account%n");
+            System.out.printf("(2) Deposit money%n");
+            System.out.printf("(3) Withdraw money%n");
+            System.out.printf("(4) End%n");
+            System.out.printf("----------------------%n");
+            System.out.print("Please enter a number: ");
+            choice = input.nextInt();
+            Formatting.blankSpace(1);
+
+            switch (choice) {
+                case 1:
+
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    System.exit(0);
+                    break;
+                default:
+                    break;
+            }
+
+        } while (true);
+    }
 }
