@@ -130,14 +130,7 @@ public class Banking {
     }
 
     public Boolean checkPin(){
-
-        if (input.next().equals(pin)) {
-            return true;
-        }
-
-        else {
-            return false;
-        }
+        return input.next().equals(pin);
     }
 
 }
