@@ -1,10 +1,8 @@
-import java.text.Normalizer;
-
 public class BankingTest {
     public static void main(String[] args) {
 
-        Banking account1 = new Banking("Braden Hines", 50.75, 1234);
-        Banking account2 =  new Banking("Timothy Syfert", 20.00, 4321);
+        Banking account1 = new Banking("Braden", "Hines", 50.75, "1234");
+        Banking account2 =  new Banking("Timothy", "Syfert", 20.00, "4321");
 
         Banking.printInfo(account1);
         Banking.printInfo(account2);
