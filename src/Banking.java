@@ -26,9 +26,7 @@ public class Banking {
 
         if (balance > 0.0) this.balance = balance;
 
-        int length = pin.length();
-
-        if (length == 4) this.pin = pin;
+        if (pin.length() == 4) this.pin = pin;
 
     }
 
