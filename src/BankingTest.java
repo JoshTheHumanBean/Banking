@@ -34,6 +34,15 @@ public class BankingTest {
         Banking.printInfo(account1);
         Banking.printInfo(account2);
         Banking.printInfo(account3);
+        Formatting.blankSpace(1);
+
+        Banking.promptDecision(account3);
+
+        Banking.printInfo(account1);
+        Banking.printInfo(account2);
+        Banking.printInfo(account3);
+        Formatting.blankSpace(1);
+
 
     }
 }

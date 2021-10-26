@@ -53,6 +53,43 @@ public class Banking {
 
     }
 
+    public static void promptDecision(@NotNull Banking object){
+
+        int choice;
+
+        System.out.printf("Welcome%n");
+
+        do {
+            System.out.printf("----------------------%n");
+            System.out.printf("(1) Display %s's balance%n", object.getName());
+            System.out.printf("(2) Deposit money%n");
+            System.out.printf("(3) Withdraw money%n");
+            System.out.printf("(4) End%n");
+            System.out.printf("----------------------%n");
+            System.out.print("Please enter a number: ");
+            choice = input.nextInt();
+            Formatting.blankSpace(1);
+
+            switch (choice) {
+                case 1:
+                    Banking.printInfo(object);
+                    break;
+                case 2:
+                    Banking.promptDeposit(object);
+                    break;
+                case 3:
+                    Banking.promptWithdrawal(object);
+                    break;
+                case 4:
+                    Formatting.blankSpace(1);
+                    break;
+                default:
+                    break;
+            }
+
+        } while (choice != 4);
+    }
+
     public static void promptDeposit(@NotNull Banking object){
         System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
         if (object.checkPin()) {
@@ -65,6 +102,7 @@ public class Banking {
 
         else {
            System.out.printf("Invalid pin entered; Action canceled%n");
+           Formatting.blankSpace(1);
         }
     }
 
@@ -85,6 +123,7 @@ public class Banking {
 
         else {
             System.out.printf("Invalid pin entered; Action canceled%n");
+            Formatting.blankSpace(1);
         }
 
     }
