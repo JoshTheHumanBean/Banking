@@ -97,13 +97,12 @@ public class Banking {
             System.out.printf("Enter deposit amount for %s: ",
                     object.getName());
             object.deposit(Banking.input.nextDouble());
-            Formatting.blankSpace(1);
         }
 
         else {
            System.out.printf("Invalid pin entered; Action canceled%n");
-           Formatting.blankSpace(1);
         }
+        Formatting.blankSpace(1);
     }
 
     public void deposit(double depositAmount){
@@ -118,13 +117,12 @@ public class Banking {
             System.out.printf("Enter withdrawal amount for %s: ",
                     object.getName());
             object.withdraw(Banking.input.nextDouble());
-            Formatting.blankSpace(1);
         }
 
         else {
             System.out.printf("Invalid pin entered; Action canceled%n");
-            Formatting.blankSpace(1);
         }
+        Formatting.blankSpace(1);
 
     }
 
