@@ -30,7 +30,7 @@ public class Banking {
 
     }
 
-    public static void initializeAccount(@NotNull Banking object){
+    public static void initializeAccount( Banking object){
         System.out.printf("Please enter new account details%n");
         Formatting.blankSpace(1);
         System.out.print("New Account's First Name: ");
@@ -47,13 +47,13 @@ public class Banking {
         Formatting.blankSpace(1);
     }
 
-    public static void printInfo(@NotNull Banking object){
+    public static void printInfo( Banking object){
         System.out.printf("%s's balance: $%.2f%n",
                 object.getName(), object.getBalance());
 
     }
 
-    public static void promptDecision(@NotNull Banking object){
+    public static void promptDecision( Banking object){
 
         int choice;
 
@@ -90,7 +90,7 @@ public class Banking {
         } while (choice != 4);
     }
 
-    public static void promptDeposit(@NotNull Banking object){
+    public static void promptDeposit( Banking object){
         System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
         if (object.checkPin()) {
 
@@ -110,7 +110,7 @@ public class Banking {
         if (depositAmount > 0.0) balance += depositAmount;
     }
 
-    public static void promptWithdrawal(@NotNull Banking object){
+    public static void promptWithdrawal( Banking object){
         System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
         if (object.checkPin()) {
 
