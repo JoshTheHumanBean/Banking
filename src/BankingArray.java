@@ -1,15 +1,16 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class BankingArray extends Banking{
     private int numAccounts = 0;
-    private List<BankingArray> accountsList;
+    private ArrayList<BankingArray> accountsList = new ArrayList<BankingArray>();
 
     public BankingArray[] createAccounts(int newAccounts){
         BankingArray[] accounts = new BankingArray[newAccounts];
-        numAccounts += newAccounts;
-        for (int i = numAccounts; i<numAccounts; i++){
+
+        for (int i = numAccounts; i<numAccounts+newAccounts-1; i++){
             accountsList.add(accounts[newAccounts]);
         }
+        numAccounts += newAccounts;
         return accounts;
 
     }
@@ -21,12 +22,13 @@ public class BankingArray extends Banking{
             }
         }
     }
-    /*
-    public BankingArray[] getArray(){
-        return;
+
+    public ArrayList<BankingArray> getArrayList(){
+        return accountsList;
     }
-    */
-    public void displayArray(){
+
+    public void displayArrayList(){
+        System.out.print(accountsList);
     }
 
 
