@@ -7,14 +7,14 @@ public class BankingArray extends Banking{
     public BankingArray[] createAccounts(int newAccounts){
         BankingArray[] accounts = new BankingArray[newAccounts];
 
-        for (int i = numAccounts; i<numAccounts+newAccounts-1; i++){
+        for (int i = numAccounts; i<numAccounts+newAccounts; i++){
             accountsList.add(accounts[newAccounts]);
         }
         numAccounts += newAccounts;
         return accounts;
 
     }
-    
+
     public void initializeArray(BankingArray[] objects){
         for (int i =0; i<numAccounts; i++){
             if (objects[i] == null){
