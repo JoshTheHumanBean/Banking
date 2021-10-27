@@ -30,7 +30,7 @@ public class Banking {
 
     }
 
-    public static void initializeAccount(Banking object){
+    public static void initializeAccount(@NotNull Banking object){
         System.out.printf("Please enter new account details%n");
         Formatting.blankSpace(1);
         System.out.print("New Account's First Name: ");

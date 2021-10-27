@@ -42,7 +42,5 @@ public class BankingTest {
         Banking.printInfo(account2);
         Banking.printInfo(account3);
         Formatting.blankSpace(1);
-
-
     }
 }

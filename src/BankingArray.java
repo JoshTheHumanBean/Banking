@@ -14,7 +14,7 @@ public class BankingArray extends Banking{
         return accounts;
 
     }
-
+    
     public void initializeArray(BankingArray[] objects){
         for (int i =0; i<numAccounts; i++){
             if (objects[i] == null){
