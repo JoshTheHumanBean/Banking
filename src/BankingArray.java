@@ -1,18 +1,68 @@
-public class BankingArray {
+public class BankingArray extends Banking{
     private static int numAccounts = 0;
 
-    public static void createAccounts(int i){
-        Banking[] accounts = new Banking[numAccounts+i];
+    public BankingArray[] createAccounts(int i){
+        BankingArray[] accounts = new BankingArray[numAccounts+i];
         numAccounts += i;
+        return accounts;
+
     }
 
-    public static void initializeAccounts(Banking[] objects){
+    public void initializeArray(BankingArray[] objects){
         for (int i =0; i<numAccounts; i++){
             if (objects[i] == null){
                 Banking.initializeAccount(objects[i]);
             }
         }
     }
+    /*
+    public BankingArray[] getArray(){
+        return
+    }
+    */
+    public void displayArray(){
+        return;
+    }
 
 
+    public void mainMenu(){
+
+        int choice;
+
+        System.out.printf("Welcome%n");
+
+        do {
+            System.out.printf("----------------------%n");
+            System.out.printf("(1) Create new account%n");
+            System.out.printf("(2) Display balance%n");
+            System.out.printf("(3) Deposit money%n");
+            System.out.printf("(4) Withdraw money%n");
+            System.out.printf("(5) Close app%n");
+            System.out.printf("----------------------%n");
+            System.out.print("Please enter a number: ");
+            choice = input.nextInt();
+            Formatting.blankSpace(1);
+
+            switch (choice) {
+                case 1:
+                    initializeArray(createAccounts(1));
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+                    System.exit(0);
+                    break;
+                default:
+                    break;
+            }
+
+        } while (true);
+    }
 }
