@@ -71,6 +71,7 @@ public class BankingArray extends Banking{
                 case 1:
                     createAccounts(1);
                     initializeArray();
+                    System.out.println(numAccounts);
                     break;
                 case 2:
 
