@@ -52,7 +52,8 @@ public class BankingArray extends Banking{
 
             switch (choice) {
                 case 1:
-                    initializeArray(createAccounts(1));
+                    BankingArray[] accounts = createAccounts(1);
+                    initializeArray(accounts);
                     break;
                 case 2:
 
