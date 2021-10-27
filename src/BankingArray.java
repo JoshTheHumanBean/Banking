@@ -17,11 +17,29 @@ public class BankingArray extends Banking{
 
     }
 
+    /*
+    public static void initializeAccount(BankingArray object){
+        System.out.printf("Please enter new account details%n");
+        Formatting.blankSpace(1);
+        System.out.print("New Account's First Name: ");
+        object.setFirstName(input.next());
+        Formatting.blankSpace(1);
+        System.out.print("New Account's Last Name: ");
+        object.setLastName(input.next());
+        Formatting.blankSpace(1);
+        System.out.print("New Account's Initial Balance: ");
+        object.setBalance(input.nextDouble());
+        Formatting.blankSpace(1);
+        System.out.print("New Account Pin Number: ");
+        object.setPin(input.next());
+        Formatting.blankSpace(1);
+    }
+    */
+
+
     public void initializeArray(BankingArray[] objects){
         for (int i =0; i<numAccounts; i++){
-            if (objects[i] == null){
-                Banking.initializeAccount(objects[i]);
-            }
+            Banking.initializeAccount(objects[i]);
         }
     }
 
