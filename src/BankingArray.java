@@ -7,7 +7,7 @@ public class BankingArray extends Banking{
     public void createAccounts(int newAccounts){
         numAccounts += newAccounts;
 
-        for (int i = numAccounts; i<numAccounts-1; i++){
+        for (int i = 0; i<numAccounts; i++){
             BankingArray account = new BankingArray();
             accountsList.add(account);
         }
@@ -33,8 +33,10 @@ public class BankingArray extends Banking{
 
 
     public void initializeArray(){
-        for (BankingArray bankingArray : accountsList) {
-            bankingArray.initializeAccount(bankingArray);
+        for (int i = 0; i<numAccounts; i++) {
+            if (accountsList.get(i) == null){
+                initializeAccount(accountsList.get(i));
+            }
         }
     }
 
@@ -43,7 +45,7 @@ public class BankingArray extends Banking{
     }
 
     public void displayArrayList(){
-        System.out.print(accountsList.toString());
+        System.out.println(accountsList.toString());
     }
 
 
@@ -67,9 +69,8 @@ public class BankingArray extends Banking{
 
             switch (choice) {
                 case 1:
-                    createAccounts(4);
+                    createAccounts(1);
                     initializeArray();
-                    displayArrayList();
                     break;
                 case 2:
 
