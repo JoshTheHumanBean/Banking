@@ -17,7 +17,7 @@ public class BankingArray extends Banking{
 
     }
 
-    /*
+
     public static void initializeAccount(BankingArray object){
         System.out.printf("Please enter new account details%n");
         Formatting.blankSpace(1);
@@ -34,12 +34,11 @@ public class BankingArray extends Banking{
         object.setPin(input.next());
         Formatting.blankSpace(1);
     }
-    */
 
 
     public void initializeArray(BankingArray[] objects){
         for (int i =0; i<numAccounts; i++){
-            Banking.initializeAccount(objects[i]);
+            initializeAccount(objects[i]);
         }
     }
 
