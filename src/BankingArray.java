@@ -4,21 +4,17 @@ public class BankingArray extends Banking{
     private int numAccounts = 0;
     private ArrayList<BankingArray> accountsList = new ArrayList<BankingArray>();
 
-    public BankingArray[] createAccounts(int newAccounts){
-        BankingArray[] accounts = new BankingArray[newAccounts];
-
+    public void createAccounts(int newAccounts){
         numAccounts += newAccounts;
 
         for (int i = numAccounts; i<numAccounts-1; i++){
-            accountsList.add(accounts[newAccounts]);
+            BankingArray account = new BankingArray();
+            accountsList.add(account);
         }
-
-        return accounts;
-
     }
 
 
-    public static void initializeAccount(BankingArray object){
+    public void initializeAccount(BankingArray object){
         System.out.printf("Please enter new account details%n");
         Formatting.blankSpace(1);
         System.out.print("New Account's First Name: ");
@@ -36,9 +32,9 @@ public class BankingArray extends Banking{
     }
 
 
-    public void initializeArray(BankingArray[] objects){
-        for (int i =0; i<numAccounts; i++){
-            initializeAccount(objects[i]);
+    public void initializeArray(){
+        for (BankingArray bankingArray : accountsList) {
+            bankingArray.initializeAccount(bankingArray);
         }
     }
 
@@ -47,7 +43,7 @@ public class BankingArray extends Banking{
     }
 
     public void displayArrayList(){
-        System.out.print(accountsList);
+        System.out.print(accountsList.toString());
     }
 
 
@@ -71,9 +67,9 @@ public class BankingArray extends Banking{
 
             switch (choice) {
                 case 1:
-                    BankingArray[] accounts = createAccounts(1);
-                    initializeArray(accounts);
-
+                    createAccounts(4);
+                    initializeArray();
+                    displayArrayList();
                     break;
                 case 2:
 
