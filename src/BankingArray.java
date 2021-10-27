@@ -7,10 +7,12 @@ public class BankingArray extends Banking{
     public BankingArray[] createAccounts(int newAccounts){
         BankingArray[] accounts = new BankingArray[newAccounts];
 
-        for (int i = numAccounts; i<numAccounts+newAccounts; i++){
+        numAccounts += newAccounts;
+
+        for (int i = numAccounts; i<numAccounts-1; i++){
             accountsList.add(accounts[newAccounts]);
         }
-        numAccounts += newAccounts;
+
         return accounts;
 
     }
@@ -54,6 +56,7 @@ public class BankingArray extends Banking{
                 case 1:
                     BankingArray[] accounts = createAccounts(1);
                     initializeArray(accounts);
+
                     break;
                 case 2:
 
