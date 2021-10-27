@@ -1,9 +1,15 @@
-public class BankingArray extends Banking{
-    private static int numAccounts = 0;
+import java.util.List;
 
-    public BankingArray[] createAccounts(int i){
-        BankingArray[] accounts = new BankingArray[numAccounts+i];
-        numAccounts += i;
+public class BankingArray extends Banking{
+    private int numAccounts = 0;
+    private List<BankingArray> accountsList;
+
+    public BankingArray[] createAccounts(int newAccounts){
+        BankingArray[] accounts = new BankingArray[newAccounts];
+        numAccounts += newAccounts;
+        for (int i = numAccounts; i<numAccounts; i++){
+            accountsList.add(accounts[newAccounts]);
+        }
         return accounts;
 
     }
