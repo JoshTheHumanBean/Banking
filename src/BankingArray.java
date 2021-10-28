@@ -29,14 +29,17 @@ public class BankingArray extends Banking{
     public static void displayArrayList(){
         for (int i = 0; i<numAccounts; i++) {
             if (accountsList.get(i).getFirstName() != "null"){
-                System.out.printf("%s: ", i);
-                Banking.printInfo(accountsList.get(i));
+                System.out.printf("%s: %s", i, accountsList.get(i).getName());
+
             }
         }
+        Formatting.blankSpace(2);
     }
 
-    public static void chooseAccount(){
-
+    public static Banking chooseAccount(){
+        displayArrayList();
+        System.out.print("Please choose the account you wish to use: ");
+        return  accountsList.get(Banking.input.nextInt());
     }
 
 
@@ -49,10 +52,11 @@ public class BankingArray extends Banking{
         do {
             System.out.printf("----------------------%n");
             System.out.printf("(1) Create new account%n");
-            System.out.printf("(2) Display balance%n");
-            System.out.printf("(3) Deposit money%n");
-            System.out.printf("(4) Withdraw money%n");
-            System.out.printf("(5) Close app%n");
+            System.out.printf("(2) Display all active accounts%n");
+            System.out.printf("(3) Display balance%n");
+            System.out.printf("(4) Deposit money%n");
+            System.out.printf("(5) Withdraw money%n");
+            System.out.printf("(6) Close app%n");
             System.out.printf("----------------------%n");
             System.out.print("Please enter a number: ");
             choice = input.nextInt();
@@ -67,12 +71,15 @@ public class BankingArray extends Banking{
                     displayArrayList();
                     break;
                 case 3:
-
+                    displayBalance(chooseAccount());
                     break;
                 case 4:
-
+                    promptDeposit(chooseAccount());
                     break;
                 case 5:
+                    promptWithdrawal(chooseAccount());
+                    break;
+                case 6:
                     break;
                 default:
                     break;

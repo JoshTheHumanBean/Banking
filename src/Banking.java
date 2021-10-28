@@ -53,6 +53,19 @@ public class Banking {
 
     }
 
+    public static void displayBalance(Banking object){
+        System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
+        if (object.checkPin()) {
+            System.out.printf("%s's balance: $%.2f%n",
+                    object.getName(), object.getBalance());
+        }
+
+        else {
+            System.out.printf("Invalid pin entered; Action canceled%n");
+        }
+        Formatting.blankSpace(1);
+    }
+
     public static void promptDecision( Banking object){
 
         int choice;
