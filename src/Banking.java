@@ -1,7 +1,7 @@
 import org.jetbrains.annotations.NotNull;
 import java.util.Scanner;
-
-public class Banking {
+import java.io.*;
+public class Banking implements java.io.Serializable{
     private String firstName;
     private String lastName;
     private double balance;
