@@ -53,17 +53,19 @@ public class Banking {
 
     }
 
-    public static void displayBalance(Banking object){
-        System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
-        if (object.checkPin()) {
-            System.out.printf("%s's balance: $%.2f%n",
-                    object.getName(), object.getBalance());
-        }
+    public static void displayBalance(Banking object) throws NullPointerException{
+        try {
+            System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
+            if (object.checkPin()) {
+                System.out.printf("%s's balance: $%.2f%n",
+                        object.getName(), object.getBalance());
+            }
 
-        else {
-            System.out.printf("Invalid pin entered; Action canceled%n");
-        }
-        Formatting.blankSpace(1);
+            else {
+                System.out.printf("Invalid pin entered; Action canceled%n");
+            }
+            Formatting.blankSpace(1);
+        }catch(NullPointerException n){System.out.printf("Invalid account; Action canceled%n");}
     }
 
     public static void promptDecision( Banking object){
@@ -103,19 +105,21 @@ public class Banking {
         } while (choice != 4);
     }
 
-    public static void promptDeposit( Banking object){
-        System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
-        if (object.checkPin()) {
+    public static void promptDeposit( Banking object) throws NullPointerException{
+        try{
+            System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
+            if (object.checkPin()) {
 
-            System.out.printf("Enter deposit amount for %s: ",
-                    object.getName());
-            object.deposit(Banking.input.nextDouble());
-        }
+                System.out.printf("Enter deposit amount for %s: ",
+                        object.getName());
+                object.deposit(Banking.input.nextDouble());
+            }
 
-        else {
-           System.out.printf("Invalid pin entered; Action canceled%n");
-        }
-        Formatting.blankSpace(1);
+            else {
+                System.out.printf("Invalid pin entered; Action canceled%n");
+            }
+            Formatting.blankSpace(1);
+        }catch(NullPointerException n){System.out.printf("Invalid account; Action canceled%n");}
     }
 
     public void deposit(double depositAmount){
@@ -123,19 +127,21 @@ public class Banking {
         if (depositAmount > 0.0) balance += depositAmount;
     }
 
-    public static void promptWithdrawal( Banking object){
-        System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
-        if (object.checkPin()) {
+    public static void promptWithdrawal( Banking object) throws NullPointerException{
+        try{
+            System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
+            if (object.checkPin()) {
 
-            System.out.printf("Enter withdrawal amount for %s: ",
-                    object.getName());
-            object.withdraw(Banking.input.nextDouble());
-        }
+                System.out.printf("Enter withdrawal amount for %s: ",
+                        object.getName());
+                object.withdraw(Banking.input.nextDouble());
+            }
 
-        else {
-            System.out.printf("Invalid pin entered; Action canceled%n");
-        }
-        Formatting.blankSpace(1);
+            else {
+                System.out.printf("Invalid pin entered; Action canceled%n");
+            }
+            Formatting.blankSpace(1);
+        }catch(NullPointerException n){System.out.printf("Invalid account; Action canceled%n");}
 
     }
 

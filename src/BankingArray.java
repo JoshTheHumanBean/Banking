@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class BankingArray extends Banking{
     private static int numAccounts = 0;
-    private static ArrayList<Banking> accountsList = new ArrayList<Banking>();
+    private static ArrayList<Banking> accountsList = new ArrayList<>();
 
     public static void createAccounts(int newAccounts){
         numAccounts += newAccounts;
@@ -15,7 +15,7 @@ public class BankingArray extends Banking{
 
     public static void initializeArray(){
         for (int i = 0; i<numAccounts; i++) {
-            if (accountsList.get(i).getFirstName() == "null"){
+            if (accountsList.get(i).getFirstName().equals("null")){
                 initializeAccount(accountsList.get(i));
             }
 
@@ -27,11 +27,17 @@ public class BankingArray extends Banking{
     }
 
     public static void displayArrayList(){
-        for (int i = 0; i<numAccounts; i++) {
-            if (accountsList.get(i).getFirstName() != "null"){
-                System.out.printf("%s: %s", i, accountsList.get(i).getName());
+        if (numAccounts != 0){
+            for (int i = 0; i<numAccounts; i++) {
+                if (accountsList.get(i).getFirstName().equals("null")){
+                    System.out.printf("%s: %s", i, accountsList.get(i).getName());
 
+                }
             }
+        }
+
+        else{
+            System.out.print("Sorry, there aren't any accounts to display");
         }
         Formatting.blankSpace(2);
     }
@@ -39,7 +45,13 @@ public class BankingArray extends Banking{
     public static Banking chooseAccount(){
         displayArrayList();
         System.out.print("Please choose the account you wish to use: ");
-        return  accountsList.get(Banking.input.nextInt());
+        int choice = Banking.input.nextInt();
+        if (choice <= accountsList.size() - 1){
+            return  accountsList.get(choice);
+        }
+        else{
+            return null;
+        }
     }
 
 
@@ -80,13 +92,12 @@ public class BankingArray extends Banking{
                     promptWithdrawal(chooseAccount());
                     break;
                 case 6:
+                    System.exit(0);
                     break;
                 default:
                     break;
             }
 
-        } while (choice != 5);
-
-        System.exit(0);
+        } while (true);
     }
 }
