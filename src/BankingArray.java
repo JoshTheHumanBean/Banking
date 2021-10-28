@@ -7,7 +7,7 @@ public class BankingArray extends Banking{
     public static void createAccounts(int newAccounts){
         numAccounts += newAccounts;
 
-        for (int i = 0; i<numAccounts; i++){
+        for (int i = 0; i<newAccounts; i++){
             Banking account = new Banking();
             accountsList.add(account);
         }
@@ -27,32 +27,25 @@ public class BankingArray extends Banking{
     }
 
     public static void displayArrayList(){
-        if (numAccounts != 0){
-            for (int i = 0; i<numAccounts; i++) {
-                if (accountsList.get(i).getFirstName().equals("null")){
-                    System.out.printf("%s: %s", i, accountsList.get(i).getName());
+        for (int i = 0; i<numAccounts; i++) {
+            if (!accountsList.get(i).getFirstName().equals("null")){
+                System.out.printf("%s: %s%n", i, accountsList.get(i).getName());
 
-                }
             }
         }
-
-        else{
-            System.out.print("Sorry, there aren't any accounts to display");
+        if(numAccounts == 0){
+            System.out.printf("Sorry, there are no active accounts%n");
         }
-        Formatting.blankSpace(2);
+        Formatting.blankSpace(1);
     }
 
     public static Banking chooseAccount(){
         displayArrayList();
-        if (numAccounts != 0){
-            System.out.print("Please choose the account you wish to use: ");
-            int choice = Banking.input.nextInt();
-            if (choice <= accountsList.size() - 1){
-                return  accountsList.get(choice);
-            }
-            else{return null;}
+        System.out.print("Please choose the account you wish to use: ");
+        int choice = Banking.input.nextInt();
+        if (choice <= accountsList.size() - 1){
+            return  accountsList.get(choice);
         }
-
         else{return null;}
     }
 
@@ -95,6 +88,7 @@ public class BankingArray extends Banking{
                     System.exit(0);
                     break;
                 default:
+                    System.out.printf("Invalid choice, please try again%n");
                     break;
             }
         } while (true);
