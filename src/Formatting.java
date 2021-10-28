@@ -6,4 +6,9 @@ public class Formatting {
 
         }
     }
+
+    public static void promptEnterKey(){
+        System.out.println("Press \"ENTER\" to continue...");
+        Banking.input.nextLine();
+    }
 }

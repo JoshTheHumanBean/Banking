@@ -134,9 +134,13 @@ public class Banking {
         return balance;
     }
 
+    public String getFirstName(){return firstName;}
+
     public void setFirstName(String firstName){
         this.firstName = firstName;
     }
+
+    public String getLastName(){return lastName;}
 
     public void setLastName(String lastName){
         this.lastName = lastName;
@@ -149,6 +153,8 @@ public class Banking {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+    public String getPin(){return pin;}
 
     public void setPin(String pin) {
         this.pin = pin;

@@ -9,16 +9,19 @@ public class BankingTest {
         Formatting.blankSpace(1);
 
         Banking.promptDeposit(account1);
+        Formatting.promptEnterKey();
 
         Banking.printInfo(account1);
         Banking.printInfo(account2);
         Formatting.blankSpace(1);
+        Formatting.promptEnterKey();
 
         Banking.promptWithdrawal(account2);
 
         Banking.printInfo(account1);
         Banking.printInfo(account2);
         Formatting.blankSpace(1);
+        Formatting.promptEnterKey();
 
         Banking account3 = new Banking();
 

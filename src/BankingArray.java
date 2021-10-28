@@ -1,59 +1,46 @@
 import java.util.ArrayList;
 
 public class BankingArray extends Banking{
-    private int numAccounts = 0;
-    private ArrayList<BankingArray> accountsList = new ArrayList<BankingArray>();
+    private static int numAccounts = 0;
+    private static ArrayList<Banking> accountsList = new ArrayList<Banking>();
 
-    public void createAccounts(int newAccounts){
+    public static void createAccounts(int newAccounts){
         numAccounts += newAccounts;
 
         for (int i = 0; i<numAccounts; i++){
-            BankingArray account = new BankingArray();
+            Banking account = new Banking();
             accountsList.add(account);
         }
     }
 
-
-    public void initializeAccount(BankingArray object){
-        System.out.printf("Please enter new account details%n");
-        Formatting.blankSpace(1);
-        System.out.print("New Account's First Name: ");
-        object.setFirstName(input.next());
-        Formatting.blankSpace(1);
-        System.out.print("New Account's Last Name: ");
-        object.setLastName(input.next());
-        Formatting.blankSpace(1);
-        System.out.print("New Account's Initial Balance: ");
-        object.setBalance(input.nextDouble());
-        Formatting.blankSpace(1);
-        System.out.print("New Account Pin Number: ");
-        object.setPin(input.next());
-        Formatting.blankSpace(1);
-    }
-
-
-    public void initializeArray(){
+    public static void initializeArray(){
         for (int i = 0; i<numAccounts; i++) {
-            if (accountsList.get(i) == null){
+            if (accountsList.get(i).getFirstName() == "null"){
                 initializeAccount(accountsList.get(i));
             }
+
         }
     }
 
-    public ArrayList<BankingArray> getArrayList(){
+    public static ArrayList<Banking> getArrayList(){
         return accountsList;
     }
 
-    public void displayArrayList(){
+    public static void displayArrayList(){
         for (int i = 0; i<numAccounts; i++) {
-            if (accountsList.get(i) == null){
+            if (accountsList.get(i).getFirstName() != "null"){
+                System.out.printf("%s: ", i);
                 Banking.printInfo(accountsList.get(i));
             }
         }
     }
 
+    public static void chooseAccount(){
 
-    public void mainMenu(){
+    }
+
+
+    public static void mainMenu(){
 
         int choice;
 
@@ -93,5 +80,7 @@ public class BankingArray extends Banking{
             }
 
         } while (choice != 5);
+
+        System.exit(0);
     }
 }
