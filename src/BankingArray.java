@@ -72,7 +72,7 @@ public class BankingArray extends Banking{
             FileInputStream fileIn = new FileInputStream(
                     "C:\\Users\\umex2\\Documents\\Java Programs\\IdeaProjects\\Banking\\Banking\\Banking.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            accountsList.addAll((ArrayList<Banking>) in.readObject());
+            accountsList.addAll((ArrayList) in.readObject());
             in.close();
             fileIn.close();
         } catch (IOException i) {
