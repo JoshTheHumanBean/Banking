@@ -54,12 +54,14 @@ public class BankingArray extends Banking{
     public static void serializeAccounts(){
         try {
             FileOutputStream fileOut =
-                    new FileOutputStream("C:\\Users\\umex2\\Documents\\Java Programs\\IdeaProjects\\Banking\\Banking\\Banking.ser");
+                    new FileOutputStream(
+                            "C:\\Users\\umex2\\Documents\\Java Programs\\IdeaProjects\\Banking\\Banking\\Banking.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(accountsList);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in C:\\Users\\umex2\\Documents\\Java Programs\\IdeaProjects\\Banking\\Banking\\Banking.ser");
+            System.out.printf(
+                    "Serialized data is saved in C:\\Users\\umex2\\Documents\\Java Programs\\IdeaProjects\\Banking\\Banking\\Banking.txt");
         } catch (IOException i) {
             i.printStackTrace();
         }
@@ -67,7 +69,8 @@ public class BankingArray extends Banking{
 
     public static void deserializeAccounts(){
         try {
-            FileInputStream fileIn = new FileInputStream("C:\\Users\\umex2\\Documents\\Java Programs\\IdeaProjects\\Banking\\Banking\\Banking.ser");
+            FileInputStream fileIn = new FileInputStream(
+                    "C:\\Users\\umex2\\Documents\\Java Programs\\IdeaProjects\\Banking\\Banking\\Banking.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             accountsList.addAll((ArrayList<Banking>) in.readObject());
             in.close();
