@@ -45,7 +45,11 @@ public class BankingArray extends Banking{
     }
 
     public void displayArrayList(){
-        System.out.println(accountsList.toString());
+        for (int i = 0; i<numAccounts; i++) {
+            if (accountsList.get(i) == null){
+                Banking.printInfo(accountsList.get(i));
+            }
+        }
     }
 
 
@@ -74,7 +78,7 @@ public class BankingArray extends Banking{
                     System.out.println(numAccounts);
                     break;
                 case 2:
-
+                    displayArrayList();
                     break;
                 case 3:
 
@@ -83,12 +87,11 @@ public class BankingArray extends Banking{
 
                     break;
                 case 5:
-                    System.exit(0);
                     break;
                 default:
                     break;
             }
 
-        } while (true);
+        } while (choice != 5);
     }
 }
