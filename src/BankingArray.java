@@ -44,24 +44,24 @@ public class BankingArray extends Banking{
 
     public static Banking chooseAccount(){
         displayArrayList();
-        System.out.print("Please choose the account you wish to use: ");
-        int choice = Banking.input.nextInt();
-        if (choice <= accountsList.size() - 1){
-            return  accountsList.get(choice);
+        if (numAccounts != 0){
+            System.out.print("Please choose the account you wish to use: ");
+            int choice = Banking.input.nextInt();
+            if (choice <= accountsList.size() - 1){
+                return  accountsList.get(choice);
+            }
+            else{return null;}
         }
-        else{
-            return null;
-        }
+
+        else{return null;}
     }
 
 
     public static void mainMenu(){
-
         int choice;
 
-        System.out.printf("Welcome%n");
-
         do {
+            Formatting.clearScreen();
             System.out.printf("----------------------%n");
             System.out.printf("(1) Create new account%n");
             System.out.printf("(2) Display all active accounts%n");
@@ -97,7 +97,6 @@ public class BankingArray extends Banking{
                 default:
                     break;
             }
-
         } while (true);
     }
 }

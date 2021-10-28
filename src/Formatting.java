@@ -11,4 +11,9 @@ public class Formatting {
         System.out.println("Press \"ENTER\" to continue...");
         Banking.input.nextLine();
     }
+
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 }
