@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_181" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="Banking">
+    <void property="balance">
+     <double>100.0</double>
+    </void>
+    <void property="firstName">
+     <string>Josh</string>
+    </void>
+    <void property="lastName">
+     <string>Shuman</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Banking">
+    <void property="balance">
+     <double>25.0</double>
+    </void>
+    <void property="firstName">
+     <string>John</string>
+    </void>
+    <void property="lastName">
+     <string>Smith</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Banking"/>
+  </void>
+ </object>
+</java>

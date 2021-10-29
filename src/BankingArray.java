@@ -84,7 +84,9 @@ public class BankingArray extends Banking{
         try{
             FileInputStream fis = new FileInputStream("accounts.xml");
             XMLDecoder decoder = new XMLDecoder(fis);
-            accountsList.addAll((ArrayList<Banking>) decoder.readObject());
+            ArrayList<Banking> accountsOnFile = (ArrayList<Banking>) decoder.readObject();
+            accountsList.addAll(accountsOnFile);
+            numAccounts += accountsOnFile.size();
             decoder.close();
             fis.close();
         }catch(java.io.FileNotFoundException file){
