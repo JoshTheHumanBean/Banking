@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 import java.io.*;
 import java.util.InputMismatchException;
+import java.beans.ExceptionListener;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class BankingArray extends Banking{
     private static int numAccounts = 0;
@@ -51,40 +57,31 @@ public class BankingArray extends Banking{
         else{return null;}
     }
 
-    public static void serializeAccounts(){
-        try {
-            FileOutputStream fileOut =
-                    new FileOutputStream(
-                            "C:\\Users\\umex2\\Documents\\Java Programs\\IdeaProjects\\Banking\\Banking\\Banking.txt");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(accountsList);
-            out.close();
-            fileOut.close();
-            System.out.printf(
-                    "Serialized data is saved in C:\\Users\\umex2\\Documents\\Java Programs\\IdeaProjects\\Banking\\Banking\\Banking.txt");
-        } catch (IOException i) {
-            i.printStackTrace();
-        }
+    public static void serializeAccounts() throws IOException{
+        FileOutputStream fos = new FileOutputStream("accounts.xml");
+        XMLEncoder encoder = new XMLEncoder(fos);
+        encoder.setExceptionListener(new ExceptionListener() {
+            public void exceptionThrown(Exception e) {
+                System.out.println("Exception! :"+e.toString());
+            }
+        });
+        encoder.writeObject(accountsList);
+        encoder.close();
+        fos.close();
     }
 
-    public static void deserializeAccounts(){
-        try {
-            FileInputStream fileIn = new FileInputStream(
-                    "C:\\Users\\umex2\\Documents\\Java Programs\\IdeaProjects\\Banking\\Banking\\Banking.txt");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            accountsList.addAll((ArrayList) in.readObject());
-            in.close();
-            fileIn.close();
-        } catch (IOException i) {
-            i.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Banking class not found");
-            c.printStackTrace();
-        }
+    public static void deserializeAccounts() throws IOException{
+        FileInputStream fis = new FileInputStream("accounts.xml");
+        XMLDecoder decoder = new XMLDecoder(fis);
+        ArrayList<Banking> decodedAccounts = (ArrayList<Banking>) decoder.readObject();
+        decoder.close();
+        fis.close();
+        accountsList.addAll(decodedAccounts);
     }
 
 
-    public static void mainMenu() {
+
+    public static void mainMenu(){
         int choice;
             do {
                 try {
@@ -120,10 +117,12 @@ public class BankingArray extends Banking{
                             promptWithdrawal(chooseAccount());
                             break;
                         case 6:
-                            serializeAccounts();
+                            try {serializeAccounts();}
+                            catch(IOException ie) {ie.printStackTrace();}
                             break;
                         case 7:
-                            deserializeAccounts();
+                            try {deserializeAccounts();}
+                            catch(IOException ie) {ie.printStackTrace();}
                             break;
                         case 8:
                             System.exit(0);
