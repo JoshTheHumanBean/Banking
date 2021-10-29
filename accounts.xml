@@ -4,7 +4,7 @@
   <void method="add">
    <object class="Banking">
     <void property="balance">
-     <double>100.0</double>
+     <double>1208.0</double>
     </void>
     <void property="firstName">
      <string>Josh</string>
@@ -12,23 +12,10 @@
     <void property="lastName">
      <string>Shuman</string>
     </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="Banking">
-    <void property="balance">
-     <double>25.0</double>
-    </void>
-    <void property="firstName">
-     <string>John</string>
-    </void>
-    <void property="lastName">
-     <string>Smith</string>
+    <void property="pin">
+     <string>1234</string>
     </void>
    </object>
-  </void>
-  <void method="add">
-   <object class="Banking"/>
   </void>
  </object>
 </java>

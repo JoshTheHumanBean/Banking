@@ -18,14 +18,14 @@ public class Banking implements java.io.Serializable{
         this.pin = "0000";
     }
 
-    public Banking(String firstName, String lastName, double balance, String pin){
+    public Banking(String firstName, String lastName, double balance, String number){
         this.firstName = firstName;
 
         this.lastName = lastName;
 
         if (balance > 0.0) this.balance = balance;
 
-        if (pin.length() == 4) this.pin = pin;
+        if (pin.length() == 4) this.pin = number;
 
     }
 
@@ -42,7 +42,7 @@ public class Banking implements java.io.Serializable{
         object.setBalance(input.nextDouble());
         Formatting.blankSpace(1);
         System.out.print("New Account Pin Number: ");
-        setPin(input.next(), object);
+        object.setPin(input.next());
         Formatting.blankSpace(1);
     }
 
@@ -137,10 +137,8 @@ public class Banking implements java.io.Serializable{
 
     public String getPin(){return pin;}
 
-    public static void setPin(String pin, Banking object) {
-        object.pin = pin;
-
-        if (pin.length() == 4) object.pin = pin;
+    public void setPin(String pin) {
+        if (pin.length() == 4) this.pin = pin;
 
         else {
             Formatting.blankSpace(1);

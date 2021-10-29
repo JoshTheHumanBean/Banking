@@ -1,3 +1,4 @@
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.InputMismatchException;
@@ -85,29 +86,35 @@ public class BankingArray extends Banking{
             FileInputStream fis = new FileInputStream("accounts.xml");
             XMLDecoder decoder = new XMLDecoder(fis);
             ArrayList<Banking> accountsOnFile = (ArrayList<Banking>) decoder.readObject();
-            accountsList.addAll(accountsOnFile);
-            numAccounts += accountsOnFile.size();
+            for (Banking object : accountsOnFile){
+                accountsList.add(object);
+                numAccounts++;
+            }
             decoder.close();
             fis.close();
-        }catch(java.io.FileNotFoundException file){
+        }
+        catch(java.io.FileNotFoundException file){
             System.out.printf("File not found; Action canceled%n");
+        }
+        catch(ArrayIndexOutOfBoundsException array){
+            System.out.printf("No accounts found on file; Action canceled%n");
         }
     }
 
     public static void changePin(Banking object){
         System.out.printf("For security reasons, please enter %s's pin: ", object.getName());
         if (object.checkPin()) {
-            System.out.printf("Please enter the new pin you wish to use: ");
-            Banking.setPin(input.next(), object);
+            System.out.print("Please enter the new pin you wish to use: ");
+            object.setPin(input.next());
         }
     }
-    /*
+
     public static void deleteAccount(){
         try{
             BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-            String xmlFile = accounts.xml;
+            String xmlFile = "accounts.xml";
             File file = new File(xmlFile);
-            System.out.print("Enter an element which have to delete: ");
+            System.out.print("Enter an to delete: ");
             String remElement = bf.readLine();
             if (file.exists()){
                 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -126,7 +133,7 @@ public class BankingArray extends Banking{
                 System.out.println();
             }
             else{
-                System.out.println("File not found!");
+                System.out.printf("File not found; Action%n");
             }
         }
         catch (Exception e){
@@ -134,10 +141,26 @@ public class BankingArray extends Banking{
             System.exit(0);
         }
     }
-    */
+
     public static void mainMenu(){
         int choice;
-            do {
+        try {
+            System.out.printf("Deserializing accounts%n");
+            Formatting.blankSpace(1);
+            deserializeAccounts();
+        } catch (java.io.FileNotFoundException file) {
+            System.out.printf("File not found; No accounts loaded in%n");
+        }
+        catch(ArrayIndexOutOfBoundsException array){
+            System.out.printf("No accounts found on file; Action canceled%n");
+        }
+        catch(IOException io){
+            System.out.printf("Error occured while deserializing accounts, No accounts loaded in %n");
+        }
+        System.out.printf("Deserializing finished%n");
+        Formatting.blankSpace(1);
+        Formatting.promptEnterKey();
+        do {
                 try {
                     Formatting.clearScreen();
                     System.out.printf("----------------------%n");
@@ -148,9 +171,9 @@ public class BankingArray extends Banking{
                     System.out.printf("(5) Withdraw money%n");
                     System.out.printf("(6) Change pin%n");
                     System.out.printf("(7) Save all active accounts%n");
-                    System.out.printf("(8) Load in all accounts%n");
-                    System.out.printf("(9) Create null account%n");
-                    System.out.printf("(10) Initialize null account%n");
+                    System.out.printf("(8) Reload in all accounts%n");
+                    System.out.printf("(9) Show number of accounts%n");
+                    System.out.printf("(10) Delete account%n");
                     System.out.printf("(11) Close app%n");
                     System.out.printf("----------------------%n");
                     System.out.print("Please enter a number: ");
@@ -178,19 +201,27 @@ public class BankingArray extends Banking{
                             break;
                         case 7:
                             try {serializeAccounts();}
-                            catch(IOException ie) {ie.printStackTrace();}
+                            catch(IOException io){
+                                System.out.printf("Error occured while deserializing accounts, No accounts saved%n");
+                            }
                             break;
                         case 8:
                             try {deserializeAccounts();}
-                            catch(IOException ie) {ie.printStackTrace();}
+                            catch(IOException io){
+                                System.out.printf("Error occured while deserializing accounts, No accounts loaded in %n");
+                            }
                             break;
                         case 9:
-                            createAccounts(1);
+                            System.out.printf("Number of Accounts: %s%n", numAccounts);
                             break;
                         case 10:
-                            initializeAccount(chooseAccount());
+
                             break;
                         case 11:
+                            try {serializeAccounts();}
+                            catch(IOException io){
+                                System.out.printf("Error occured while deserializing accounts, No accounts saved%n");
+                            }
                             System.exit(0);
                             break;
                         default:
