@@ -7,6 +7,7 @@ import java.beans.XMLEncoder;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 public class BankingArray extends Banking{
     private static int numAccounts = 0;
@@ -23,7 +24,7 @@ public class BankingArray extends Banking{
 
     public static void initializeArray(){
         for (int i = 0; i<numAccounts; i++) {
-            if (accountsList.get(i).getFirstName().equals("null")){
+            if (Objects.isNull(accountsList.get(i))) {
                 initializeAccount(accountsList.get(i));
             }
 
@@ -36,7 +37,7 @@ public class BankingArray extends Banking{
 
     public static void displayArrayList(){
         for (int i = 0; i<numAccounts; i++) {
-            if (!accountsList.get(i).getFirstName().equals("null")){
+            if (!Objects.isNull(accountsList.get(i))){
                 System.out.printf("%s: %s%n", i, accountsList.get(i).getName());
 
             }
@@ -49,10 +50,13 @@ public class BankingArray extends Banking{
 
     public static Banking chooseAccount(){
         displayArrayList();
-        System.out.print("Please choose the account you wish to use: ");
-        int choice = Banking.input.nextInt();
-        if (choice <= accountsList.size() - 1){
-            return  accountsList.get(choice);
+        if (numAccounts != 0){
+            System.out.print("Please choose the account you wish to use: ");
+            int choice = Banking.input.nextInt();
+            if (choice <= accountsList.size() - 1){
+                return  accountsList.get(choice);
+            }
+            else{return null;}
         }
         else{return null;}
     }
@@ -73,10 +77,9 @@ public class BankingArray extends Banking{
     public static void deserializeAccounts() throws IOException{
         FileInputStream fis = new FileInputStream("accounts.xml");
         XMLDecoder decoder = new XMLDecoder(fis);
-        ArrayList<Banking> decodedAccounts = (ArrayList<Banking>) decoder.readObject();
+        accountsList.addAll((ArrayList<Banking>) decoder.readObject());
         decoder.close();
         fis.close();
-        accountsList.addAll(decodedAccounts);
     }
 
 
@@ -87,14 +90,16 @@ public class BankingArray extends Banking{
                 try {
                     Formatting.clearScreen();
                     System.out.printf("----------------------%n");
-                    System.out.printf("(1) Create new account%n");
+                    System.out.printf("(1) Create and initialize new account%n");
                     System.out.printf("(2) Display all active accounts%n");
                     System.out.printf("(3) Display balance%n");
                     System.out.printf("(4) Deposit money%n");
                     System.out.printf("(5) Withdraw money%n");
                     System.out.printf("(6) Save all active accounts%n");
                     System.out.printf("(7) Load in all accounts%n");
-                    System.out.printf("(8) Close app%n");
+                    System.out.printf("(8) Create null account%n");
+                    System.out.printf("(9) Initialize null account%n");
+                    System.out.printf("(10) Close app%n");
                     System.out.printf("----------------------%n");
                     System.out.print("Please enter a number: ");
                     choice = input.nextInt();
@@ -102,7 +107,7 @@ public class BankingArray extends Banking{
                     switch (choice) {
                         case 1:
                             createAccounts(1);
-                            initializeArray();
+                            initializeAccount(accountsList.get(accountsList.size() - 1));
                             break;
                         case 2:
                             displayArrayList();
@@ -125,6 +130,12 @@ public class BankingArray extends Banking{
                             catch(IOException ie) {ie.printStackTrace();}
                             break;
                         case 8:
+                            createAccounts(1);
+                            break;
+                        case 9:
+                            initializeAccount(chooseAccount());
+                            break;
+                        case 10:
                             System.exit(0);
                             break;
                         default:

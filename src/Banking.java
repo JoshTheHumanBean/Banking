@@ -64,7 +64,7 @@ public class Banking implements java.io.Serializable{
                 System.out.printf("Invalid pin entered; Action canceled%n");
             }
             Formatting.blankSpace(1);
-        }catch(NullPointerException n){System.out.printf("Invalid account; Action canceled%n");}
+        }catch(NullPointerException n){System.out.printf("Invalid; Action canceled%n");}
     }
 
     public static void promptDecision( Banking object){
@@ -118,7 +118,7 @@ public class Banking implements java.io.Serializable{
                 System.out.printf("Invalid pin entered; Action canceled%n");
             }
             Formatting.blankSpace(1);
-        }catch(NullPointerException n){System.out.printf("Invalid account; Action canceled%n");}
+        }catch(NullPointerException n){System.out.printf("Invalid; Action canceled%n");}
     }
 
     public void deposit(double depositAmount){
@@ -140,7 +140,7 @@ public class Banking implements java.io.Serializable{
                 System.out.printf("Invalid pin entered; Action canceled%n");
             }
             Formatting.blankSpace(1);
-        }catch(NullPointerException n){System.out.printf("Invalid account; Action canceled%n");}
+        }catch(NullPointerException n){System.out.printf("Invalid; Action canceled%n");}
 
     }
 
