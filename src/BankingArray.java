@@ -82,6 +82,14 @@ public class BankingArray extends Banking{
         fis.close();
     }
 
+    public static void changePin(Banking object){
+        System.out.printf("For security reasons, please enter %s's pin: ", object.getName());
+        if (object.checkPin()) {
+            System.out.printf("Please enter the new pin you wish to use: ");
+            Banking.setPin(input.next(), object);
+        }
+    }
+
 
 
     public static void mainMenu(){
@@ -95,11 +103,12 @@ public class BankingArray extends Banking{
                     System.out.printf("(3) Display balance%n");
                     System.out.printf("(4) Deposit money%n");
                     System.out.printf("(5) Withdraw money%n");
-                    System.out.printf("(6) Save all active accounts%n");
-                    System.out.printf("(7) Load in all accounts%n");
-                    System.out.printf("(8) Create null account%n");
-                    System.out.printf("(9) Initialize null account%n");
-                    System.out.printf("(10) Close app%n");
+                    System.out.printf("(6) Change pin%n");
+                    System.out.printf("(7) Save all active accounts%n");
+                    System.out.printf("(8) Load in all accounts%n");
+                    System.out.printf("(9) Create null account%n");
+                    System.out.printf("(10) Initialize null account%n");
+                    System.out.printf("(11) Close app%n");
                     System.out.printf("----------------------%n");
                     System.out.print("Please enter a number: ");
                     choice = input.nextInt();
@@ -122,20 +131,23 @@ public class BankingArray extends Banking{
                             promptWithdrawal(chooseAccount());
                             break;
                         case 6:
+                            changePin(chooseAccount());
+                            break;
+                        case 7:
                             try {serializeAccounts();}
                             catch(IOException ie) {ie.printStackTrace();}
                             break;
-                        case 7:
+                        case 8:
                             try {deserializeAccounts();}
                             catch(IOException ie) {ie.printStackTrace();}
                             break;
-                        case 8:
+                        case 9:
                             createAccounts(1);
                             break;
-                        case 9:
+                        case 10:
                             initializeAccount(chooseAccount());
                             break;
-                        case 10:
+                        case 11:
                             System.exit(0);
                             break;
                         default:

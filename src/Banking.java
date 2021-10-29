@@ -42,7 +42,7 @@ public class Banking implements java.io.Serializable{
         object.setBalance(input.nextDouble());
         Formatting.blankSpace(1);
         System.out.print("New Account Pin Number: ");
-        object.setPin(input.next());
+        setPin(input.next(), object);
         Formatting.blankSpace(1);
     }
 
@@ -54,7 +54,7 @@ public class Banking implements java.io.Serializable{
 
     public static void displayBalance(Banking object) throws NullPointerException{
         try {
-            System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
+            System.out.printf("For security reasons, please enter %s's pin: ", object.getName());
             if (object.checkPin()) {
                 System.out.printf("%s's balance: $%.2f%n",
                         object.getName(), object.getBalance());
@@ -67,46 +67,9 @@ public class Banking implements java.io.Serializable{
         }catch(NullPointerException n){System.out.printf("Invalid; Action canceled%n");}
     }
 
-    public static void promptDecision( Banking object){
-
-        int choice;
-
-        System.out.printf("Welcome%n");
-
-        do {
-            System.out.printf("----------------------%n");
-            System.out.printf("(1) Display %s's balance%n", object.getName());
-            System.out.printf("(2) Deposit money%n");
-            System.out.printf("(3) Withdraw money%n");
-            System.out.printf("(4) End%n");
-            System.out.printf("----------------------%n");
-            System.out.print("Please enter a number: ");
-            choice = input.nextInt();
-            Formatting.blankSpace(1);
-
-            switch (choice) {
-                case 1:
-                    Banking.printInfo(object);
-                    break;
-                case 2:
-                    Banking.promptDeposit(object);
-                    break;
-                case 3:
-                    Banking.promptWithdrawal(object);
-                    break;
-                case 4:
-                    Formatting.blankSpace(1);
-                    break;
-                default:
-                    break;
-            }
-
-        } while (choice != 4);
-    }
-
     public static void promptDeposit( Banking object) throws NullPointerException{
         try{
-            System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
+            System.out.printf("For security reasons, please enter %s's pin: ", object.getName());
             if (object.checkPin()) {
 
                 System.out.printf("Enter deposit amount for %s: ",
@@ -128,7 +91,7 @@ public class Banking implements java.io.Serializable{
 
     public static void promptWithdrawal( Banking object) throws NullPointerException{
         try{
-            System.out.printf("For security reasons, please enter %s's pin number: ", object.getName());
+            System.out.printf("For security reasons, please enter %s's pin: ", object.getName());
             if (object.checkPin()) {
 
                 System.out.printf("Enter withdrawal amount for %s: ",
@@ -174,16 +137,14 @@ public class Banking implements java.io.Serializable{
 
     public String getPin(){return pin;}
 
-    public void setPin(String pin) {
-        this.pin = pin;
+    public static void setPin(String pin, Banking object) {
+        object.pin = pin;
 
-        int length = pin.length();
-
-        if (length == 4) this.pin = pin;
+        if (pin.length() == 4) object.pin = pin;
 
         else {
             Formatting.blankSpace(1);
-            System.out.printf("%s is an invalid pin; Default pin '0000' set", pin);
+            System.out.printf("%s is an invalid pin; Previous pin restored (Default pin is '0000')", pin);
             Formatting.blankSpace(1);
         }
     }
@@ -191,5 +152,44 @@ public class Banking implements java.io.Serializable{
     public Boolean checkPin(){
         return input.next().equals(pin);
     }
+
+    /*
+    public static void promptDecision( Banking object){
+
+        int choice;
+
+        System.out.printf("Welcome%n");
+
+        do {
+            System.out.printf("----------------------%n");
+            System.out.printf("(1) Display %s's balance%n", object.getName());
+            System.out.printf("(2) Deposit money%n");
+            System.out.printf("(3) Withdraw money%n");
+            System.out.printf("(4) End%n");
+            System.out.printf("----------------------%n");
+            System.out.print("Please enter a number: ");
+            choice = input.nextInt();
+            Formatting.blankSpace(1);
+
+            switch (choice) {
+                case 1:
+                    Banking.printInfo(object);
+                    break;
+                case 2:
+                    Banking.promptDeposit(object);
+                    break;
+                case 3:
+                    Banking.promptWithdrawal(object);
+                    break;
+                case 4:
+                    Formatting.blankSpace(1);
+                    break;
+                default:
+                    break;
+            }
+
+        } while (choice != 4);
+    }
+     */
 
 }
