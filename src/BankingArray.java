@@ -1,4 +1,3 @@
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.InputMismatchException;
@@ -10,7 +9,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Objects;
 import org.w3c.dom.*;
-import org.xml.sax.*;
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
@@ -71,11 +69,7 @@ public class BankingArray extends Banking{
     public static void serializeAccounts() throws IOException{
         FileOutputStream fos = new FileOutputStream("accounts.xml");
         XMLEncoder encoder = new XMLEncoder(fos);
-        encoder.setExceptionListener(new ExceptionListener() {
-            public void exceptionThrown(Exception e) {
-                System.out.println("Exception! :"+e.toString());
-            }
-        });
+        encoder.setExceptionListener(e -> System.out.println("Exception! :"+e.toString()));
         encoder.writeObject(accountsList);
         encoder.close();
         fos.close();
@@ -155,7 +149,7 @@ public class BankingArray extends Banking{
             System.out.printf("No accounts found on file; Action canceled%n");
         }
         catch(IOException io){
-            System.out.printf("Error occured while deserializing accounts, No accounts loaded in %n");
+            System.out.printf("Error occurred while deserializing accounts, No accounts loaded in %n");
         }
         System.out.printf("Deserializing finished%n");
         Formatting.blankSpace(1);
@@ -202,25 +196,25 @@ public class BankingArray extends Banking{
                         case 7:
                             try {serializeAccounts();}
                             catch(IOException io){
-                                System.out.printf("Error occured while deserializing accounts, No accounts saved%n");
+                                System.out.printf("Error occurred while deserializing accounts, No accounts saved%n");
                             }
                             break;
                         case 8:
                             try {deserializeAccounts();}
                             catch(IOException io){
-                                System.out.printf("Error occured while deserializing accounts, No accounts loaded in %n");
+                                System.out.printf("Error occurred while deserializing accounts, No accounts loaded in %n");
                             }
                             break;
                         case 9:
                             System.out.printf("Number of Accounts: %s%n", numAccounts);
                             break;
                         case 10:
-
+                            deleteAccount();
                             break;
                         case 11:
                             try {serializeAccounts();}
                             catch(IOException io){
-                                System.out.printf("Error occured while deserializing accounts, No accounts saved%n");
+                                System.out.printf("Error occurred while deserializing accounts, No accounts saved%n");
                             }
                             System.exit(0);
                             break;
