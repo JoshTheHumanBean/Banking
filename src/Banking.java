@@ -41,7 +41,7 @@ public class Banking implements java.io.Serializable{
         System.out.print("New Account's Initial Balance: ");
         object.setBalance(input.nextDouble());
         Formatting.blankSpace(1);
-        System.out.print("New Account Pin Number: ");
+        System.out.print("New Account 4 Digit Pin Number: ");
         object.setPin(input.next());
         Formatting.blankSpace(1);
     }
