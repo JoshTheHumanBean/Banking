@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.io.*;
 import java.util.InputMismatchException;
-import java.beans.ExceptionListener;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.FileInputStream;
@@ -104,35 +103,32 @@ public class BankingArray extends Banking{
     }
 
     public static void deleteAccount(){
-        try{
-            BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-            String xmlFile = "accounts.xml";
-            File file = new File(xmlFile);
-            System.out.print("Enter an to delete: ");
-            String remElement = bf.readLine();
-            if (file.exists()){
-                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-                DocumentBuilder builder = factory.newDocumentBuilder();
-                Document doc = builder.parse(xmlFile);
-                TransformerFactory tFactory = TransformerFactory.newInstance();
-                Transformer tFormer = tFactory.newTransformer();
-                Element element = (Element)doc.getElementsByTagName(remElement).item(0);
-                //  Remove the node
-                element.getParentNode().removeChild(element);
-                //  Normalize the DOM tree to combine all adjacent nodes
-                doc.normalize();
-                Source source = new DOMSource(doc);
-                Result dest = new StreamResult(System.out);
-                tFormer.transform(source, dest);
-                System.out.println();
+        try {
+            String file = "accounts.xml";
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(file);
+            // Get the parent node
+            Node ArrayList = doc.getFirstChild();
+            // Get the employee element
+            Node Banking = doc.getElementsByTagName("object").item(0);
+            // Get the list of child nodes of employee
+            NodeList list = Banking.getChildNodes();
+            for (int i = 0; i < list.getLength(); i++) {
+                Node node = list.item(i);
+                //Remove "name" node
+                if ("name".equals(node.getNodeName())) {
+                    Banking.removeChild(node);
+                }
             }
-            else{
-                System.out.printf("File not found; Action%n");
-            }
-        }
-        catch (Exception e){
-            System.err.println(e);
-            System.exit(0);
+            // write the content to the xml file
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer transformer = tf.newTransformer();
+            DOMSource src = new DOMSource(doc);
+            StreamResult res = new StreamResult(new File(file));
+            transformer.transform(src, res);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -196,7 +192,7 @@ public class BankingArray extends Banking{
                         case 7:
                             try {serializeAccounts();}
                             catch(IOException io){
-                                System.out.printf("Error occurred while deserializing accounts, No accounts saved%n");
+                                System.out.printf("Error occurred while serializing accounts, No accounts saved%n");
                             }
                             break;
                         case 8:
@@ -214,7 +210,7 @@ public class BankingArray extends Banking{
                         case 11:
                             try {serializeAccounts();}
                             catch(IOException io){
-                                System.out.printf("Error occurred while deserializing accounts, No accounts saved%n");
+                                System.out.printf("Error occurred while serializing accounts, No accounts saved%n");
                             }
                             System.exit(0);
                             break;
