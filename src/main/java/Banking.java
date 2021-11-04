@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 import java.util.Scanner;
 import java.io.*;
 public class Banking implements java.io.Serializable{
@@ -7,6 +9,7 @@ public class Banking implements java.io.Serializable{
     private String pin;
 
     public static Scanner input = new Scanner(System.in);
+    public static Gson gson = new Gson();
 
     public Banking(){
         this.firstName = "null";

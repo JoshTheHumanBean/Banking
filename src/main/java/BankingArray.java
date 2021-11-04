@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.io.*;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -72,6 +73,10 @@ public class BankingArray extends Banking{
         encoder.writeObject(accountsList);
         encoder.close();
         fos.close();
+
+        for (Banking object : accountsList){
+            gson.toJson(object);
+        }
     }
 
     public static void deserializeAccounts() throws IOException{
@@ -133,6 +138,7 @@ public class BankingArray extends Banking{
     }
 
     public static void mainMenu(){
+        int listnum;
         int choice;
         try {
             System.out.printf("Deserializing accounts%n");
@@ -153,18 +159,14 @@ public class BankingArray extends Banking{
         do {
                 try {
                     Formatting.clearScreen();
+                    listnum = 0;
                     System.out.printf("----------------------%n");
-                    System.out.printf("(1) Create and initialize new account%n");
-                    System.out.printf("(2) Display all active accounts%n");
-                    System.out.printf("(3) Display balance%n");
-                    System.out.printf("(4) Deposit money%n");
-                    System.out.printf("(5) Withdraw money%n");
-                    System.out.printf("(6) Change pin%n");
-                    System.out.printf("(7) Save all active accounts%n");
-                    System.out.printf("(8) Reload in all accounts%n");
-                    System.out.printf("(9) Show number of accounts%n");
-                    System.out.printf("(10) Delete account%n");
-                    System.out.printf("(11) Close app%n");
+                    for (String s : Arrays.asList("Create and initialize new account", "Display all active accounts",
+                            "Display balance", "Deposit money", "Withdraw money", "Change pin", "Save all active accounts",
+                            "Reload in all accounts", "Show number of accounts", "Delete account", "Close app%n")){
+                        listnum++;
+                        System.out.printf("(%s) %s%n", listnum, s);
+                    }
                     System.out.printf("----------------------%n");
                     System.out.print("Please enter a number: ");
                     choice = input.nextInt();
