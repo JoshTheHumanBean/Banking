@@ -11,7 +11,12 @@ public class Banking implements java.io.Serializable{
     public static Scanner input = new Scanner(System.in);
     public static Gson gson = new Gson();
 
-    public Banking(){this("", "", 0, "0000");}
+    public Banking(){
+        this.firstName = "";
+        this.lastName = "";
+        this.balance = 0.0;
+        this.pin = "0000";
+    }
 
     public Banking(String firstName, String lastName, double balance, String number){
         this.firstName = firstName;
