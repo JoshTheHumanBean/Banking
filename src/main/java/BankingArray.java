@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.io.*;
 import java.util.Arrays;
+import java.io.FileWriter;
 import java.util.InputMismatchException;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -13,10 +14,13 @@ import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.nio.file.*;
 
 public class BankingArray extends Banking{
     private static int numAccounts = 0;
     private static ArrayList<Banking> accountsList = new ArrayList<>();
+    private static File accountsJson = new File("accounts.json");
+
 
     public static void createAccounts(int newAccounts){
         numAccounts += newAccounts;
@@ -67,16 +71,21 @@ public class BankingArray extends Banking{
     }
 
     public static void serializeAccounts() throws IOException{
+        /*
         FileOutputStream fos = new FileOutputStream("accounts.xml");
         XMLEncoder encoder = new XMLEncoder(fos);
         encoder.setExceptionListener(e -> System.out.println("Exception! :"+e.toString()));
         encoder.writeObject(accountsList);
         encoder.close();
         fos.close();
+        */
+        FileWriter fileWriter = new FileWriter("accounts.json");
 
         for (Banking object : accountsList){
-            gson.toJson(object);
+            fileWriter.write(gson.toJson(object));
         }
+
+
     }
 
     public static void deserializeAccounts() throws IOException{
