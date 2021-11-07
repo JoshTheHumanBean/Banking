@@ -172,7 +172,7 @@ public class BankingArray extends Banking{
                     System.out.printf("----------------------%n");
                     for (String s : Arrays.asList("Create and initialize new account", "Display all active accounts",
                             "Display balance", "Deposit money", "Withdraw money", "Change pin", "Save all active accounts",
-                            "Reload in all accounts", "Show number of accounts", "Delete account", "Close app%n")){
+                            "Reload in all accounts", "Show number of accounts", "Delete account", "Close app")){
                         listnum++;
                         System.out.printf("(%s) %s%n", listnum, s);
                     }
