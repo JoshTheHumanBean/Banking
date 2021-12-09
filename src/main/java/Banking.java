@@ -151,43 +151,4 @@ public class Banking implements java.io.Serializable{
         return input.next().equals(pin);
     }
 
-    /*
-    public static void promptDecision( Banking object){
-
-        int choice;
-
-        System.out.printf("Welcome%n");
-
-        do {
-            System.out.printf("----------------------%n");
-            System.out.printf("(1) Display %s's balance%n", object.getName());
-            System.out.printf("(2) Deposit money%n");
-            System.out.printf("(3) Withdraw money%n");
-            System.out.printf("(4) End%n");
-            System.out.printf("----------------------%n");
-            System.out.print("Please enter a number: ");
-            choice = input.nextInt();
-            Formatting.blankSpace(1);
-
-            switch (choice) {
-                case 1:
-                    Banking.printInfo(object);
-                    break;
-                case 2:
-                    Banking.promptDeposit(object);
-                    break;
-                case 3:
-                    Banking.promptWithdrawal(object);
-                    break;
-                case 4:
-                    Formatting.blankSpace(1);
-                    break;
-                default:
-                    break;
-            }
-
-        } while (choice != 4);
-    }
-     */
-
 }

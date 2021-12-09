@@ -71,19 +71,22 @@ public class BankingArray extends Banking{
     }
 
     public static void serializeAccounts() throws IOException{
-        /*
+
         FileOutputStream fos = new FileOutputStream("accounts.xml");
         XMLEncoder encoder = new XMLEncoder(fos);
         encoder.setExceptionListener(e -> System.out.println("Exception! :"+e.toString()));
         encoder.writeObject(accountsList);
         encoder.close();
         fos.close();
-        */
+
+        /*
         FileWriter fileWriter = new FileWriter("accounts.json");
 
         for (Banking object : accountsList){
             fileWriter.write(gson.toJson(object));
         }
+
+         */
 
 
     }
