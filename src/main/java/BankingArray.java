@@ -22,7 +22,7 @@ public class BankingArray extends Banking{
     private static File accountsJson = new File("accounts.json");
 
 
-    public static void createAccounts(int newAccounts){
+    public void createAccounts(int newAccounts){
         numAccounts += newAccounts;
 
         for (int i = 0; i<newAccounts; i++){
@@ -31,7 +31,7 @@ public class BankingArray extends Banking{
         }
     }
 
-    public static void initializeArray(){
+    public void initializeArray(){
         for (int i = 0; i<numAccounts; i++) {
             if (Objects.isNull(accountsList.get(i))) {
                 initializeAccount(accountsList.get(i));
@@ -40,11 +40,11 @@ public class BankingArray extends Banking{
         }
     }
 
-    public static ArrayList<Banking> getArrayList(){
+    public ArrayList<Banking> getArrayList(){
         return accountsList;
     }
 
-    public static void displayArrayList(){
+    public void displayArrayList(){
         for (int i = 0; i<numAccounts; i++) {
             if (!Objects.isNull(accountsList.get(i))){
                 System.out.printf("%s: %s%n", i, accountsList.get(i).getName());
@@ -57,7 +57,7 @@ public class BankingArray extends Banking{
         Formatting.blankSpace(1);
     }
 
-    public static Banking chooseAccount(){
+    public Banking chooseAccount(){
         displayArrayList();
         if (numAccounts != 0){
             System.out.print("Please choose the account you wish to use: ");
@@ -70,7 +70,7 @@ public class BankingArray extends Banking{
         else{return null;}
     }
 
-    public static void serializeAccounts() throws IOException{
+    public void serializeAccounts() throws IOException{
 
         FileOutputStream fos = new FileOutputStream("accounts.xml");
         XMLEncoder encoder = new XMLEncoder(fos);
@@ -91,7 +91,7 @@ public class BankingArray extends Banking{
 
     }
 
-    public static void deserializeAccounts() throws IOException{
+    public void deserializeAccounts() throws IOException{
         try{
             FileInputStream fis = new FileInputStream("accounts.xml");
             XMLDecoder decoder = new XMLDecoder(fis);
@@ -111,7 +111,7 @@ public class BankingArray extends Banking{
         }
     }
 
-    public static void changePin(Banking object){
+    public void changePin(Banking object){
         System.out.printf("For security reasons, please enter %s's pin: ", object.getName());
         if (object.checkPin()) {
             System.out.print("Please enter the new pin you wish to use: ");
@@ -119,7 +119,7 @@ public class BankingArray extends Banking{
         }
     }
 
-    public static void deleteAccount(){
+    public void deleteAccount(){
         try {
             String file = "accounts.xml";
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -149,7 +149,7 @@ public class BankingArray extends Banking{
         }
     }
 
-    public static void mainMenu(){
+    public void mainMenu(){
         int listnum;
         int choice;
         try {
