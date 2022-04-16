@@ -190,7 +190,7 @@ public class Banking implements java.io.Serializable{
         FileOutputStream fos = new FileOutputStream("accounts.xml");
         XMLEncoder encoder = new XMLEncoder(fos);
         encoder.setExceptionListener(e -> System.out.println("Exception encountered: "+e.toString()));
-        encoder.writeObject(accountsList);
+        for (Banking account : accountsList){encoder.writeObject(account);}
         encoder.close();
         fos.close();
     }
@@ -199,9 +199,8 @@ public class Banking implements java.io.Serializable{
         try{
             FileInputStream fis = new FileInputStream("accounts.xml");
             XMLDecoder decoder = new XMLDecoder(fis);
-            ArrayList<Banking> accountsOnFile = (ArrayList<Banking>) decoder.readObject();
-            for (Banking object : accountsOnFile){
-                accountsList.add(object);
+            for (int i = 0; i < decoder.count(); i++){
+                accountsList.add((Banking) decoder,readObject);
                 numAccounts++;
             }
             decoder.close();
