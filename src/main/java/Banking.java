@@ -21,10 +21,10 @@ public class Banking implements java.io.Serializable{
     private double balance;
     private String pin;
 
-    private static int numAccounts = 0;
-    private static ArrayList<Banking> accountsList = new ArrayList<>();
-
-    public static Scanner input = new Scanner(System.in);
+    private int numAccounts = 0;
+    private ArrayList<Banking> accountsList = new ArrayList<>();
+    private Scanner input = new Scanner(System.in);
+    private Gson gson = new Gson();
 
     public Banking(){
         this.firstName = "";
