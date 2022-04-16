@@ -24,10 +24,8 @@ public class Banking implements java.io.Serializable{
 
     private static int numAccounts = 0;
     private static ArrayList<Banking> accountsList = new ArrayList<>();
-    private static File accountsJson = new File("accounts.json");
 
     public static Scanner input = new Scanner(System.in);
-    public static Gson gson = new Gson();
 
     public Banking(){
         this.firstName = "";
