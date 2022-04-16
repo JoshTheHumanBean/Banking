@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32d1d276-7947-4b32-b22e-dfb6880a7865" name="Changes" comment="Added Gradle framework, gonna prep transition to Json file serialization using Gson library">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Banking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Banking.java" afterDir="false" />
-    </list>
+    <list default="true" id="32d1d276-7947-4b32-b22e-dfb6880a7865" name="Changes" comment="Changing how accounts are serialized and desrialized from the file input stream" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +39,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -74,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650151177466</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Changing how accounts are serialized and desrialized from the file input stream">
+      <created>1650151561457</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650151561457</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,6 +100,7 @@
     <MESSAGE value="Removed Maven framework" />
     <MESSAGE value="Removed Gson import" />
     <MESSAGE value="Added Gradle framework, gonna prep transition to Json file serialization using Gson library" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Gradle framework, gonna prep transition to Json file serialization using Gson library" />
+    <MESSAGE value="Changing how accounts are serialized and desrialized from the file input stream" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changing how accounts are serialized and desrialized from the file input stream" />
   </component>
 </project>
