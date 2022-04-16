@@ -47,7 +47,7 @@ public class Banking implements java.io.Serializable{
 
     }
 
-    public void initializeAccount( Banking object){
+    public void initializeAccount(Banking object){
         System.out.printf("Please enter new account details%n%n");
         System.out.print("New Account's First Name: ");
         object.setFirstName(input.next());
@@ -63,26 +63,22 @@ public class Banking implements java.io.Serializable{
         System.out.println();
     }
 
-    public void printInfo( Banking object){
-        System.out.printf("%s's balance: $%.2f%n", object.getName(), object.getBalance());
-    }
+    public String info(){return String.format("%s's balance: $%.2f%n", getName(), getBalance());}
 
     public void displayBalance(Banking object) throws NullPointerException{
         try {
             System.out.printf("For security, please enter %s's pin: ", object.getName());
-            if (object.checkPin()) {printInfo(object);}
+            if (object.checkPin()) {System.out.print(object.info());}
             else {System.out.printf("Invalid pin entered; Action canceled%n");}
             System.out.println();
         }catch(NullPointerException n){System.out.printf("Invalid; Action canceled%n");}
     }
 
-    public void promptDeposit( Banking object) throws NullPointerException{
+    public void promptDeposit(Banking object) throws NullPointerException{
         try{
             System.out.printf("For security reasons, please enter %s's pin: ", object.getName());
             if (object.checkPin()) {
-
-                System.out.printf("Enter deposit amount for %s: ",
-                        object.getName());
+                System.out.printf("Enter deposit amount for %s: ", object.getName());
                 object.deposit(Banking.input.nextDouble());
             }
             else {System.out.printf("Invalid pin entered; Action canceled%n");}
@@ -90,10 +86,7 @@ public class Banking implements java.io.Serializable{
         }catch(NullPointerException n){System.out.printf("Invalid; Action canceled%n");}
     }
 
-    public void deposit(double depositAmount){
-
-        if (depositAmount > 0.0) balance += depositAmount;
-    }
+    public void deposit(double depositAmount){if (depositAmount > 0.0) balance += depositAmount;}
 
     public void promptWithdrawal( Banking object) throws NullPointerException{
         try{
@@ -107,7 +100,6 @@ public class Banking implements java.io.Serializable{
             else {System.out.printf("Invalid pin entered; Action canceled%n");}
             System.out.println();
         }catch(NullPointerException n){System.out.printf("Invalid; Action canceled%n");}
-
     }
 
     public void withdraw(double withdrawalAmount){
@@ -141,35 +133,29 @@ public class Banking implements java.io.Serializable{
     public String getPin(){return pin;}
 
     public void setPin(String pin) {
-        if (pin.length() == 4) this.pin = pin;
-
-        else {
-            Formatting.blankSpace(1);
-            System.out.printf("%s is an invalid pin; Previous pin restored (Default pin is '0000')", pin);
-            Formatting.blankSpace(1);
-        }
+        if (pin.length() == 4){this.pin = pin;}
+        else {System.out.printf("&n%s is an invalid pin; Previous pin restored (Default pin is '0000')%n", pin);}
     }
 
     public void changePin(Banking object){
         System.out.printf("For security reasons, please enter %s's pin: ", object.getName());
-        if (object.checkPin()) {
+        if (object.checkPin()){
             System.out.print("Please enter the new pin you wish to use: ");
             object.setPin(input.next());
         }
     }
 
-    public Boolean checkPin(){
-        return input.next().equals(pin);
-    }
+    public Boolean checkPin(){return input.next().equals(pin);}
 
     public void createAccounts(int newAccounts){
         numAccounts += newAccounts;
-
         for (int i = 0; i<newAccounts; i++){
             Banking account = new Banking();
             accountsList.add(account);
         }
     }
+
+    public void promptEnterKey(){System.out.println("Press \"ENTER\" to continue...");input.nextLine();}
 
     public void initializeArray(){
         for (int i = 0; i<numAccounts; i++) {
@@ -180,21 +166,18 @@ public class Banking implements java.io.Serializable{
         }
     }
 
-    public ArrayList<Banking> getArrayList(){
-        return accountsList;
-    }
+    public ArrayList<Banking> getArrayList(){return accountsList;}
 
     public void displayArrayList(){
         for (int i = 0; i<numAccounts; i++) {
             if (!Objects.isNull(accountsList.get(i))){
                 System.out.printf("%s: %s%n", i, accountsList.get(i).getName());
-
             }
         }
         if(numAccounts == 0){
             System.out.printf("Sorry, there are no active accounts%n");
         }
-        Formatting.blankSpace(1);
+        System.out.println();
     }
 
     public Banking chooseAccount(){
@@ -202,12 +185,8 @@ public class Banking implements java.io.Serializable{
         if (numAccounts != 0){
             System.out.print("Please choose the account you wish to use: ");
             int choice = Banking.input.nextInt();
-            if (choice <= accountsList.size() - 1){
-                return  accountsList.get(choice);
-            }
-            else{return null;}
-        }
-        else{return null;}
+            if (choice <= accountsList.size() - 1){return  accountsList.get(choice);}else{return null;}
+        }else{return null;}
     }
 
     public void serializeAccounts() throws IOException{
@@ -269,8 +248,7 @@ public class Banking implements java.io.Serializable{
         int listnum;
         int choice;
         try {
-            System.out.printf("Deserializing accounts%n");
-            Formatting.blankSpace(1);
+            System.out.printf("Deserializing accounts%n%n");
             deserializeAccounts();
         } catch (java.io.FileNotFoundException file) {
             System.out.printf("File not found; No accounts loaded in%n");
@@ -281,12 +259,10 @@ public class Banking implements java.io.Serializable{
         catch(IOException io){
             System.out.printf("Error occurred while deserializing accounts, No accounts loaded in %n");
         }
-        System.out.printf("Deserializing finished%n");
-        Formatting.blankSpace(1);
-        Formatting.promptEnterKey();
+        System.out.printf("Deserializing finished%n%n");
+        promptEnterKey();
         do {
             try {
-                Formatting.clearScreen();
                 listnum = 0;
                 System.out.printf("----------------------%n");
                 for (String s : Arrays.asList("Create and initialize new account", "Display all active accounts",
@@ -298,7 +274,7 @@ public class Banking implements java.io.Serializable{
                 System.out.printf("----------------------%n");
                 System.out.print("Please enter a number: ");
                 choice = input.nextInt();
-                Formatting.blankSpace(1);
+                System.out.println();
                 switch (choice) {
                     case 1:
                         createAccounts(1);
