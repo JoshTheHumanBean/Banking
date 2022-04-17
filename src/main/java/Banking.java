@@ -286,7 +286,6 @@ public class Banking implements java.io.Serializable{
                         System.out.printf("Number of Accounts: %s%n", numAccounts);
                         break;
                     case 10:
-                        deleteAccount();
                         break;
                     case 11:
                         try {serializeAccounts();}
