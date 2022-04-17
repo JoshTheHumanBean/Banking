@@ -16,6 +16,6 @@ sourceSets {
     }
 }
 dependencies {
-    compile 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
     implementation 'com.google.code.gson:gson:2.9.0'
 }
